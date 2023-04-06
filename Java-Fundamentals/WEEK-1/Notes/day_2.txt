@@ -1,0 +1,6 @@
+/n in a string breaks the line of code into a new line for example
+"Hello my name is \n Grant" will print 
+Hello my name is 
+Grant
+https://i.imgur.com/IICnNME.png = A good visual explaing for loops
+https://i.imgur.com/1XcetC3.png = A good visual explaining while loops
