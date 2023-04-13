@@ -1,6 +1,6 @@
 public class Item {
 
-    // MEMBER VARIABLES
+    // MEMBER VARIABLES / Attributes
     private String name;
     private double price;
 
