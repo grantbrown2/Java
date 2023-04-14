@@ -1,0 +1,7 @@
+Lecture:
+8:18:
+    Going over abstraction
+
+
+Controller is the "test" file, com.firstnamelastinital.projectname.controllers
+models hold our attributes, com.firstnamelastinital.projectname.models
