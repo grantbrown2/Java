@@ -1,0 +1,16 @@
+Lecture:
+
+Add spring dev tools when creating a spring project
+
+Controller is what talks to the front and back end, handles request and response
+
+@RestController responds with data of some sort
+@Controller responds with a view
+
+we are modularizing at first, like in python we started with all of our code in one file
+in java, we are starting with everything organized.
+
+return type for routes will always be a string
+
+8:45:
+    Good explaination of path variables
