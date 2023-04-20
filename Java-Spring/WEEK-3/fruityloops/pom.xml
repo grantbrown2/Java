@@ -8,12 +8,12 @@
 		<version>3.0.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.grantbrown.helloworld</groupId>
-	<artifactId>helloWorld</artifactId>
+	<groupId>com.grantbrown.fruityloops</groupId>
+	<artifactId>fruityloops</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>helloWorld</name>
-	<description>Demo project for Spring Boot</description>
+	<name>fruityloops</name>
+	<description>Fruity Loops Assignment for coding dojo</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -25,6 +25,12 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
@@ -33,7 +39,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		        <dependency>
+		
+		
+		
+		<dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
@@ -46,10 +55,6 @@
 		        <groupId>org.glassfish.web</groupId>
 		        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
     	</dependency>
-
-        
-        
-        
 	</dependencies>
 
 	<build>

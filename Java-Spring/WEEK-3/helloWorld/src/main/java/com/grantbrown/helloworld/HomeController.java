@@ -1,18 +1,16 @@
 package com.grantbrown.helloworld;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/hello")
+@Controller
 public class HomeController {
-	@RequestMapping("")
-	public String index() {
-		return "Hello World!";
-	}
-	
-	@RequestMapping("/world")
-	public String world() {
-		return "Class Annotation Example";
+	@RequestMapping("/")
+	public String test(Model viewmodel) {
+		viewmodel.addAttribute("fruit", "bannana");
+		String[] test = {"test1", "test2", "test3"};
+		viewmodel.addAttribute("test", test);
+		return "demo.jsp";
 	}
 }
