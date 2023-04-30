@@ -1,0 +1,10 @@
+Lecture: Update and delete CRUD
+
+
+
+use a tag to the delete route with id
+@GetMapping("delete")
+Public String deleteObject(@PathVariable("animalId") Long animalId) {
+    this.aServ.deleteById(animalId);
+    return "redirect:/"
+}

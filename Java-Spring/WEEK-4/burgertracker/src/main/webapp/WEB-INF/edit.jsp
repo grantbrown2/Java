@@ -3,40 +3,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isErrorPage="true" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Burger Tracker!</title>
+<title>Edit Burger!</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<div class="container">
-		<h1>Burger Tracker</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Burger Name</th>
-					<th>Restaurant Name</th>
-					<th>Rating (out of 5)</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-			  <c:forEach var="burger" items="${burgers}">
-				<tr>
-					<td><span>${burger.burgerName}</span></td>
-					<td><span>${burger.restaurantName}</span></td>
-					<td><span>${burger.rating}</span></td>
-					<td>
-						<a href="/burger/edit/${burger.id}">Edit</a>
-						<a href="/burger/delete/${burger.id}">Delete</a>
-					</td>
-				</tr>
-			  </c:forEach>
-			</tbody>
-		</table>
-		<form:form action="/burger/new" method="post" modelAttribute="burger">
+		<h1>Edit A Burger</h1>
+		<form:form action="/burger/update/${burger.id}" method="put" modelAttribute="burger">
 			<form:errors path="burgerName" class="error"/>
 			<div>
 				<form:label path="burgerName">Burger Name: </form:label>

@@ -19,6 +19,7 @@
 					<th>Title</th>
 					<th>Language</th>
 					<th>Number Of Pages</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +29,7 @@
 					<td><a href="/books/${book.id}">${book.title}</a></td>
 					<td><span>${book.language}</span></td>
 					<td><span>${book.numberOfPages}</span></td>
+					<td><a href="/books/${book.id}/edit">Edit</a></td>
 				</tr>
 			  </c:forEach>
 			</tbody>
