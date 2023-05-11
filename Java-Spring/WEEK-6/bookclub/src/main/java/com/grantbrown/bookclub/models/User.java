@@ -32,14 +32,14 @@ public class User {
 	@Email(message="Please enter a valid email")
 	private String email;
 	
-	@NotBlank(message="Must enter a password!")
-	@Size(min=8, max=28, message="Password must be between 8 and 28 characters!")
-	private String password;
+	@NotBlank(message="Password is required!")
+    @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
+    private String password;
 	
 	@Transient
-	@NotBlank(message="Confirm Passowrd is required!")
-	@Size(min=8, max=28, message="Password must be between 8 and 28 characters!")
-	private String confirmPassword;
+    @NotBlank(message="Confirm Password is required!")
+    @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
+    private String confirmPassword;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
