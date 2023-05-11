@@ -27,6 +27,7 @@ public class Book {
 	@NotBlank(message="Author must not be blank!")
 	private String author;
 	
+	@Column(columnDefinition = "TEXT")
 	@NotBlank(message="Your thoughts are required!")
 	private String myThoughts;
 	

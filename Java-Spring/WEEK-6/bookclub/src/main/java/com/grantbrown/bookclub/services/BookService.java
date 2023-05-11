@@ -30,4 +30,21 @@ public class BookService {
 	public Book createBook(Book book) {
 		return bookRepo.save(book);
 	}
+	
+	public void removeBook(Long id) {
+		bookRepo.deleteById(id);
+	}
+	
+	public Book editBook(Book book) {
+		Optional<Book> optionalBook = bookRepo.findById(book.getId());
+		if (optionalBook.isPresent()) {
+			Book existingBook = optionalBook.get();
+			existingBook.setTitle(book.getTitle());
+			existingBook.setAuthor(book.getAuthor());
+			existingBook.setMyThoughts(book.getMyThoughts());
+			return bookRepo.save(existingBook);
+		} else {
+			return null;
+		}
+	}
 }

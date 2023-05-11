@@ -11,7 +11,7 @@ body {
 
 .container {
 	margin: 25px auto;
-	width: 50%;
+	width: 60%;
 	padding: 20px;
 	background-color: #fff;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -34,7 +34,7 @@ body {
 	font-size: 24px;
 }
 
-.header a, .header-2 a {
+.header a, .header-2 a, .actions a {
 	text-decoration: none;
 	color: #fff;
 	background-color: #333;
@@ -131,4 +131,21 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
 	background-color: #555;
+}
+
+.thoughts-content {
+	display: block;
+	background-color: #f9f9f9;
+	padding: 10px;
+	margin: 5px 0 20px 0;
+	border-radius: 4px;
+}
+
+.sub-header {
+	font-size: 16px;
+	display: block;
+}
+
+.sub-header-title {
+	font-weight: bold;
 }
