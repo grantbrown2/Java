@@ -1,0 +1,152 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f2f2f2;
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	margin: 25px auto;
+	width: 60%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	transform: scale(1.1);
+	transition: transform 0.2s;
+}
+
+.container:hover {
+	transform: scale(1.12);
+}
+
+.header, .header-2 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.header h1 {
+	font-size: 24px;
+}
+
+.header a, .header-2 a, .actions a, .button {
+	text-decoration: none;
+	color: #fff;
+	background-color: #333;
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: background-color 0.2s;
+}
+
+.header a:hover, .header-2 a:hover, .actions a:hover, .button:hover {
+	background-color: #555;
+}
+
+.header-2 p {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 25px;
+}
+
+th, td {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+}
+
+th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+}
+
+tr:hover {
+	background-color: #f9f9f9;
+}
+
+td span {
+	display: block;
+	font-size: 14px;
+}
+
+td a {
+	text-decoration: none;
+	color: blue;
+}
+
+form {
+	margin-top: 20px;
+}
+
+.input {
+	margin-bottom: 10px;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+label {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+	width: 100%;
+	padding: 8px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, textarea:focus {
+	border-color: #666;
+}
+
+input[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #555;
+}
+
+.thoughts-content {
+	display: block;
+	background-color: #f9f9f9;
+	padding: 10px;
+	margin: 5px 0 20px 0;
+	border-radius: 4px;
+}
+
+.sub-header {
+	font-size: 16px;
+	display: block;
+}
+
+.sub-header-title {
+	font-weight: bold;
+}
