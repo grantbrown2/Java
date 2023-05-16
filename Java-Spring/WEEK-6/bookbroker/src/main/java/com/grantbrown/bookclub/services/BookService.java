@@ -7,12 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grantbrown.bookclub.models.Book;
+import com.grantbrown.bookclub.models.User;
 import com.grantbrown.bookclub.repositories.BookRepository;
+import com.grantbrown.bookclub.repositories.UserRepository;
 
 @Service
 public class BookService {
 	@Autowired
 	BookRepository bookRepo;
+	
+	@Autowired
+	UserRepository userRepo;
 	
 	public List<Book> allBooks() {
 		return bookRepo.findAll();
@@ -46,5 +51,14 @@ public class BookService {
 		} else {
 			return null;
 		}
+	}
+	
+	public List<Book> findBooksByBorrow(String borrowerName) {
+		User borrower = userRepo.findByUserName(borrowerName);
+		return bookRepo.findByBorrower(borrower);
+	}
+	
+	public List<Book> findAvailableBooks() {
+		return bookRepo.findAllByBorrowerIsNull();
 	}
 }

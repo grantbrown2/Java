@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -31,6 +33,8 @@ public class Book {
 	@NotBlank(message="Your thoughts are required!")
 	private String myThoughts;
 	
+	private Boolean isBorrowing;
+	
 	private String createdBy;
 	
 	@Column(updatable=false)
@@ -48,6 +52,18 @@ public class Book {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "borrower_id")
+	private User borrower;
+	
+	public User getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(User borrower) {
+        this.borrower = borrower;
+    }
 	
 	public Book() {}
 	
@@ -92,5 +108,11 @@ public class Book {
 	}
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
+	}
+	public Boolean getIsBorrowing() {
+		return isBorrowing;
+	}
+	public void setIsBorrowing(Boolean isBorrowing) {
+		this.isBorrowing = isBorrowing;
 	}
 }

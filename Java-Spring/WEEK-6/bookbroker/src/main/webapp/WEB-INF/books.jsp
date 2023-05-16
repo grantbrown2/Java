@@ -38,7 +38,7 @@
 					<td><a href="/books/${book.id}">${book.title}</a></td>
 					<td><span>${book.author}</span></td>
 					<td><span>${book.createdBy}</span></td>
-					<td><a href="#" class="button">Borrow</a></td>
+					<td><a href="/books/borrow/${book.id}" class="button">Borrow</a></td>
 				</tr>
 			  </c:forEach>
 			</tbody>
@@ -58,13 +58,13 @@
 				</tr>
 			</thead>
 			<tbody>
-			  <c:forEach var="book" items="${books}">
+			  <c:forEach var="book" items="${borrowedBooks}">
 				<tr>
 					<td><span>${book.id}</span></td>
 					<td><a href="/books/${book.id}">${book.title}</a></td>
 					<td><span>${book.author}</span></td>
 					<td><span>${book.createdBy}</span></td>
-					<td><a href="#" class="button">Return</a></td>
+					<td><a href="/books/return/${book.id}" class="button">Return</a></td>
 				</tr>
 			  </c:forEach>
 			</tbody>

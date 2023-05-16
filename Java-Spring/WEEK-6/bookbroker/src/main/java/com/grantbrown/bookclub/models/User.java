@@ -1,14 +1,17 @@
 package com.grantbrown.bookclub.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -56,6 +59,17 @@ public class User {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
+	@OneToMany(mappedBy = "borrower", cascade = CascadeType.ALL)
+	private List<Book> borrowedBooks;
+	
+	public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
 	
 	public User() {}
 	

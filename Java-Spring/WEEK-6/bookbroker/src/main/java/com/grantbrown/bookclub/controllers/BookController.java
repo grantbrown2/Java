@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.grantbrown.bookclub.models.Book;
+import com.grantbrown.bookclub.models.User;
 import com.grantbrown.bookclub.services.BookService;
+import com.grantbrown.bookclub.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -22,6 +24,9 @@ import jakarta.validation.Valid;
 public class BookController {
 	@Autowired
 	BookService bookServ;
+	
+	@Autowired
+	UserService userServ;
 	
 	@GetMapping("/books")
 	public String showBooks(
@@ -33,8 +38,12 @@ public class BookController {
 			return "redirect:/";
 		}
 		viewmodel.addAttribute("nameInSession", nameInSession);
-		List<Book> books = bookServ.allBooks();
+		
+		List<Book> books = bookServ.findAvailableBooks();
 		viewmodel.addAttribute("books", books);
+		
+		List<Book> borrowedBooks = bookServ.findBooksByBorrow(nameInSession);
+		viewmodel.addAttribute("borrowedBooks", borrowedBooks);
 		return "books.jsp";
 	}
 	
@@ -108,6 +117,30 @@ public class BookController {
 			bookServ.removeBook(id);
 			return "redirect:/books";
 		}
+		return "redirect:/books";
+	}
+	
+	@GetMapping("/books/borrow/{id}")
+	public String borrowBook(@PathVariable("id") Long id, HttpSession session) {
+		String userInSession = (String) session.getAttribute("userName");
+		if (userInSession == null) {
+			return "redirect:/";
+		}
+		User borrower = userServ.findByUserName(userInSession);
+		Book book = bookServ.findBook(id);
+		
+		book.setBorrower(borrower);
+		book.setIsBorrowing(true);
+		bookServ.editBook(book);
+		return "redirect:/books";
+	}
+	
+	@GetMapping("books/return/{id}")
+	public String returnBook(@PathVariable("id") Long id) {
+		Book book = bookServ.findBook(id);
+		book.setBorrower(null);
+		book.setIsBorrowing(false);
+		bookServ.editBook(book);
 		return "redirect:/books";
 	}
 }
