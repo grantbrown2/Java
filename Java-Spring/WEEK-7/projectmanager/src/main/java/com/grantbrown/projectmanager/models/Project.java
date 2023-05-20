@@ -1,6 +1,7 @@
 package com.grantbrown.projectmanager.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,13 +16,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="projects")
@@ -35,13 +37,24 @@ public class Project {
 	
 	@Column(columnDefinition = "TEXT")
 	@NotBlank
-	@Min(value = 3, message="Description must be at least 3 characters!")
-	private String descrtiption;
+	@Size(min = 3, message="Description must be at least 3 characters!")
+	private String description;
 	
 	@NotNull(message="Due date is required!")
-	@Future
+	@FutureOrPresent
 	private LocalDate dueDate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "team_lead_id")
+	private User teamLead;
+	
+	public User getTeamLead() {
+		return teamLead;
+	}
+	public void setTeamLead(User teamLead) {
+		this.teamLead = teamLead;
+	}
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "projects_users",
@@ -65,8 +78,9 @@ public class Project {
 		this.updatedAt = new Date();
 	}
 	
-	public Project() {}
-	
+	public Project() {
+		users = new ArrayList<>();
+	}
 	
 	public Long getId() {
 		return id;
@@ -80,11 +94,11 @@ public class Project {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDescrtiption() {
-		return descrtiption;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescrtiption(String descrtiption) {
-		this.descrtiption = descrtiption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public LocalDate getDueDate() {
 		return dueDate;

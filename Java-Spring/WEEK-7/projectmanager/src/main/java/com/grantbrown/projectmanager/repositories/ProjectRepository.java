@@ -11,4 +11,6 @@ import com.grantbrown.projectmanager.models.User;
 @Repository
 public interface ProjectRepository extends CrudRepository<Project, Long>{
 	List<Project> findAll();
+	List<Project> findAllByUsersNotContaining(User user); // retrieves a list of projects that the user does not associate with
+	List<Project> findAllByUsersContaining(User user);
 }
